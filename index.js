@@ -1,8 +1,3 @@
-/**
-* index.js
-* This is your main app entry point
-*/
-
 // Set up express, bodyparser and EJS
 const express = require('express');
 const session = require('express-session');
