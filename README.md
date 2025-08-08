@@ -11,11 +11,20 @@ This project was built for the **Databases, Networks and the Web** module.
   - body-parser
   - express-session
 
-## Setup Instructions
+ ## Features
+- Author registration, login, and settings management
+- Create, edit, publish, and delete articles
+- Reader view for browsing articles
+- View single articles with comments section
+- SQLite database for storing users, articles, and comments
+- EJS templates for rendering dynamic pages
 
+## Setup Instructions
 ### 1. Clone the repository
+```bash
 git clone https://github.com/ellenfaustine/News-Blog.git
 cd News-Blog
+```
 
 ### 2. Install dependencies
 npm install
@@ -33,4 +42,4 @@ node index.js
 http://localhost:3000
 
 ## License
-This project was developed for academic purposes and is not intended for production use.
+This project was developed for academic purposes.
