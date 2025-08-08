@@ -23,8 +23,7 @@ This project was built for the **Databases, Networks and the Web** module.
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/ellenfaustine/News-Blog.git
-cd News-Blog
-```
+cd News-Blog```
 
 ### 2. Install dependencies
 npm install
