@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <title>Author Login</title>
+</head>
+<body class="formContainerBody">
+    <!-- Page Title -->
+    <div class="formContainerTitle">
+        <h1>Author Login page</h1>
+    </div>
+    <!-- Login Form Container -->
+    <div class="formContainer">
+        <form action="/author/login" method="post">
+            <!-- Username Input Field -->
+            <h4>Username: </h4>
+            <input id="username" type="text" name="username" required/>
+            <!-- Password Input Field -->
+            <h4>Password: </h4>
+            <input id="password" type="password" name="password" required/>
+            <!-- Submit Button -->
+            <button type="submit" class="formButton">Login</button>
+        </form>
+        <!-- Link to Registration Page -->
+        <div class="text-center mt-3">
+            <p>Don't have an account? Click <a href="/author/register" class="link">here</a> to register.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Handling Error Display -->
+    <script>
+        // Display error message if there's an error
+        <% if (typeof error !== 'undefined' && error) { %>
+            alert("<%= error %>");
+        <% } %>
+    </script>
+</body>
+</html>

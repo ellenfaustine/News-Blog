@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <title>Author-edit</title>
+</head>
+<body>
+    <!-- Header with blog name and settings icon -->
+    <div class="headerBar">
+        <div class="blogName">
+            <h1><%= settings.blog_name %></h1>
+        </div>
+        <div class="mx-3 my-auto d-flex justify-content-end">
+            <a href="/author/settings" class="settingsIcon">
+                <i class="bi bi-gear-fill"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Back button to Author Home -->
+    <div>
+        <a href="/author/home">
+            <i class="bi bi-arrow-left backButton"></i>
+        </a>
+    </div>
+    <!-- Page title -->
+    <div class="text-center my-5">
+        <h1>Author-edit page</h1>
+    </div>
+    <!-- Form for editing or creating new article -->
+    <div class="editFormContainer mb-5">
+        <form action="<%= article.id ? '/author/edit/' + article.id : '/author/new' %>" method="POST"> 
+            <!-- Article title -->
+            <div>
+                <h4>Title: </h4>
+                <input type="text" name="title" value="<%= article.title %>" required><br>
+            </div>
+            <!-- Article content -->
+            <div class="mt-3">
+                <h4>Content: </h4>
+                <textarea name="content" rows="5" required><%= article.content %></textarea>
+            </div>
+            <!-- Save button -->
+            <button type="submit" class="formButton">Save</button>
+        </form>
+    </div>
+</body>
+</html>

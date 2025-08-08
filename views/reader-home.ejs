@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <title>Reader-Home</title>
+</head>
+<body>
+    <!-- Header with blog name and write button -->
+    <div class="headerBar">
+        <div class="blogName">
+            <h1><%= settings.blog_name %></h1>
+        </div>
+        <div class="d-flex justify-content-end">
+            <a href="/author/home" class="writeButton">Write Now!</a>
+        </div>
+    </div>
+    
+    <!-- Page title -->
+    <div class="readerHomeTitle">
+        <h1>Reader home page</h1>
+    </div>
+    
+    <!-- Subtitle for the articles section -->
+    <div class="subtitle">
+        <h2>Articles</h2>
+    </div>
+    
+    <!-- Loop through published articles -->
+    <% publishedArticles.forEach(function(publishedArticle) { %>
+        <!-- Link to view each article -->
+        <a href="/reader/views/<%= publishedArticle.id %>">
+            <div class="articles">
+                <!-- Article details -->
+                <div class="homeArticleDetails">
+                    <div class="mb-4">
+                        <h1><%= publishedArticle.title %></h1>
+                    </div>
+                    <!-- Article views -->
+                    <div>
+                        <i class="bi bi-eye-fill"></i>
+                        <h5><%= publishedArticle.views %></h5>
+                    </div>
+                    <!-- Article likes -->
+                    <div>
+                        <i class="bi bi-heart-fill"></i>
+                        <h5><%= publishedArticle.likes %></h5>
+                    </div>
+                </div>
+                <!-- Article author -->
+                <h5>Author:</h5>
+                <p><%= publishedArticle.author %></p>
+                <!-- Article published date -->
+                <h5>Published:</h5>
+                <p><%= publishedArticle.published %></p>
+            </div>
+        </a>
+    <% }); %>
+</body>
+</html>

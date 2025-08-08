@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <title>Author-Home</title>
+</head>
+<body>
+    <!-- Header with blog name and settings icon -->
+    <div class="headerBar">
+        <div class="blogName">
+            <h1><%= settings.blog_name %></h1>
+        </div>
+        <div class="mx-3 my-auto d-flex justify-content-end">
+            <a href="/author/settings" class="settingsIcon">
+                <i class="bi bi-gear-fill"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+    <!-- Page header with welcome message and new draft button -->
+    <div class="pageHeader">
+        <div class="pageTitle">
+            <h1>Author home page</h1>
+        </div>
+        <div>
+            <h1>Welcome, <%= settings.author %>!</h1>
+        </div>
+        <div class="draftButton">
+            <h5><a href="/author/new">Create New Draft</a></h5>
+        </div>
+    </div>
+    <!-- Section for published articles -->
+    <div class="subtitle">
+        <h2>Published Articles</h2>
+    </div>
+    <!-- Loop through published articles -->
+    <% publishedArticles.forEach(function(publishedArticle) { %>
+        <!-- Link to view each article -->
+        <a href="/reader/views/<%= publishedArticle.id %>">
+            <div class="articles">
+                <!-- Article details -->
+                <div class="homeArticleDetails">
+                    <div class="mb-4">
+                        <h1><%= publishedArticle.title %></h1>
+                    </div>
+                    <!-- Article views -->
+                    <div>
+                        <i class="bi bi-eye-fill"></i>
+                        <h5><%= publishedArticle.views %></h5>
+                    </div>
+                    <!-- Article likes -->
+                    <div>
+                        <i class="bi bi-heart-fill"></i>
+                        <h5><%= publishedArticle.likes %></h5>
+                    </div>
+                </div>
+                <!-- Article created date -->
+                <div>
+                    <h5>Created:</h5>
+                    <p><%= publishedArticle.created %></p>
+                </div>
+                <!-- Article last modified date -->
+                <div>
+                    <h5>Last modified:</h5>
+                    <p><%= publishedArticle.modified %></p>
+                </div>
+                <!-- Article published date -->
+                <div>
+                    <h5>Published:</h5>
+                    <p><%= publishedArticle.published %></p>
+                </div>
+                <!-- Article action buttons -->
+                <div class="articleButtonLayout">
+                    <!-- Edit button -->
+                    <div>
+                        <form action="/author/edit/<%= publishedArticle.id %>">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </div>
+                    <!-- Delete Button -->
+                    <div>
+                        <form action="/author/delete" method="POST">
+                            <input type="hidden" name="id" value="<%= publishedArticle.id %>">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </a>
+    <% }); %>
+    <!-- Section for draft articles -->
+    <div class="subtitle mt-5">
+        <h2>Draft Articles</h2>
+    </div>
+    <!-- Loop through draft articles -->
+    <% draftArticles.forEach(function(draftArticle) { %>
+        <div class="articles">
+            <!-- Link to edit each article -->
+            <a href="/author/edit/<%= draftArticle.id %>">
+                <div class="mb-4">
+                    <h1><%= draftArticle.title %></h1>
+                </div>
+                <!-- Draft article created date -->
+                <div>
+                    <h5>Created At:</h5>
+                    <p><%= draftArticle.created %></p>
+                </div>
+                <!-- Draft article last modified date -->
+                <div>
+                    <h5>Last modified At:</h5>
+                    <p><%= draftArticle.modified %></p>
+                </div>
+                <!-- Draft article action buttons -->
+                <div class="articleButtonLayout">
+                    <!-- Publish button -->
+                    <div>
+                        <form action="/author/home" method="POST">
+                            <input type="hidden" name="id" value="<%= draftArticle.id %>">
+                            <button type="submit">Publish</button>
+                        </form>
+                    </div>
+                    <!-- Edit button -->
+                    <div>
+                        <form action="/author/edit/<%= draftArticle.id %>">
+                            <button type="submit">Edit</button>
+                        </form>                        
+                    </div>
+                    <!-- Delete button -->
+                    <div>
+                        <form action="/author/delete" method="POST">
+                            <input type="hidden" name="id" value="<%= draftArticle.id %>">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>                
+            </a>
+        </div>
+    <% }); %>
+    <!-- JavaScript for displaying notifications based on query parameters -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        const notification = document.getElementById('notification');
+        // Show notification based on success parameter
+        if (success === '1') {
+            showNotification("Article published successfully.");
+        } else if (success === '2') {
+            showNotification("Article draft created successfully.");
+        } else if (success === '3') {
+            showNotification("Article updated successfully.");
+        } else if (success === '4') {
+            showNotification("Article deleted successfully.");
+        }
+        // Function to show notification and hide after 3 seconds
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000); // Hide notification after 3 seconds
+        }
+    </script>
+</body>
+</html>

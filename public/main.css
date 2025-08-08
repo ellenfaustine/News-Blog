@@ -1,0 +1,284 @@
+/* Define styles */
+
+/* general styles*/
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    margin-top: 65px;
+    background-color: #F5F5F5;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 8px 10px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+textarea {
+    padding: 10px;
+    margin: 10px 8px 10px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+button{
+    background-color: white; 
+    color: black; 
+    border: none;
+    width: 100px;
+    padding: 8px 8px; 
+    border-radius: 6px; 
+    cursor: pointer;
+}
+
+.link {
+    color:blue;
+    text-decoration: underline;
+}
+
+.headerBar{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    width: 100%;
+    height: 65px;
+    top: 0;
+    background-color: #26355D;
+    box-shadow: 0px 0.5px 5px rgb(169, 168, 168);
+    position: fixed;
+}
+
+.blogName {
+    margin: 5px 0px 10px 15px;
+    color: white;
+}
+
+.settingsIcon {
+    margin: 10px 0px 18px;
+    color: #F99417;
+    font-size: 28px;
+}
+
+.pageHeader {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.pageTitle {
+    margin: 20px 0px 80px;
+    text-align: center;
+}
+
+.subtitle {
+    margin-left: 30px;
+}
+
+.articles {
+    padding: 40px;
+    margin: 30px auto 40px;
+    border-radius: 8px;
+    background-color: #F99417;
+    width: 95%;
+}
+
+.backButton {
+    margin: 0px 20px;
+    color: #F99417;
+    font-size: 40px;
+    text-shadow: 1px 1px 0 #F99417, -1px -1px 0 #F99417, 1px -1px 0 #F99417, -1px 1px 0 #F99417;
+}
+
+.writeButton {
+    background-color: #F99417;
+    color: #fff;
+    border: none;
+    width: 105px;
+    padding: 8px 8px;
+    margin: 10px 20px 18px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.notification {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Initial page styles */
+
+.initialPageButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 20px;
+    border-radius: 8px;
+    background-color: white;
+    width: 150px;
+    height: 50px;
+}
+
+/* Form styles */
+
+.formContainerBody {
+    background-color: #26355D;
+}
+
+.formContainerTitle {
+    margin: 60px auto 40px;
+    color: white;
+    text-align: center;
+}
+
+.formContainer {
+    padding: 50px 55px 25px;
+    margin: 0px auto;
+    background-color: #F99417;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.formButton {
+    margin: 30px auto 0px;
+    background-color: #26355D;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/* Author home styles */
+
+.draftButton {
+    padding-top: 12px;
+    margin: 20px auto 120px;
+    background-color: #F99417;
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+}
+
+.draftButton > h5 > a{
+    color: white;
+}
+
+.homeArticleDetails {
+    display: grid;
+    grid-template-columns: 90% 5% 5%;
+    color: white;
+    font-size: 24px;
+}
+
+.homeArticleDetails > div > h1,
+.articles > a > div > h1,
+.articles > a > div > h5,
+.articles > a > div > p,
+.articles > div > h5,
+.articles > div > p,
+.articles > h5,
+.articles > p {
+    color: white;
+} 
+
+.homeArticleDetails > div > h5 {
+    margin: 0px 0px 0px 6px;
+    color: white;
+}
+
+
+.articleButtonLayout {
+    display: grid;
+    grid-template-columns: 105px 105px 105px 350px;
+}
+
+/* Author edit styles */
+
+.editFormContainer {
+    padding: 50px 55px;
+    margin: 0px auto;
+    background-color: #F99417;
+    border-radius: 10px;
+    width: 85%;
+    height: 100%;
+}
+
+/* Reader home styles */
+
+.readerHomeTitle {
+    margin: 140px auto 70px;
+    text-align: center;
+}
+
+/* Reader article styles */
+
+.readerArticleDetails {
+    display: grid;
+    grid-template-columns: 40% 5% 6% 5% 40%;
+    color: #F99417;
+    font-size: 24px;
+}
+
+.readerArticleDetails > div > h5 {
+    margin: 4px 0px 0px 4px;
+    color: #000000;
+}
+
+.likeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background-color: #F99417;
+    color: white;
+    width: 70px;
+    height: 35px;
+}
+
+.articleContent {
+    padding: 0px 55px;
+    margin: 60px 0px;
+    text-align: center;
+}
+
+.articleContent > p {
+    font-size: 20px;
+} 
+
+.commentForm {
+    padding: 30px 30px 30px;
+    margin: 30px auto;
+    border-radius: 8px;
+    background-color: #26355D;
+    width: 95%;
+}
+
+.commentForm > form > h5 {
+    color: white;
+}
+
+.comment {
+    padding: 23px 30px 15px;
+    margin: 30px auto 80px;
+    border-radius: 8px;
+    background-color: #F99417;
+    color: white;
+    width: 95%;
+}
+
+.commentButton {
+    background-color: #F99417;
+    color: white;
+}

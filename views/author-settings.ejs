@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <title>Author-Settings</title>
+</head>
+<body>
+    <!-- Header with blog name -->
+    <div class="headerBar">
+        <div class="blogName">
+            <h1><%= settings.blog_name %></h1>
+        </div>
+    </div>
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+    <!-- Back button to author's home page -->
+    <div>
+        <a href="/author/home">
+            <i class="bi bi-arrow-left backButton"></i>
+        </a>
+    </div>
+    <!-- Page title -->
+    <div class="text-center my-5">
+        <h1>Author-settings page</h1>
+    </div>
+    <!-- Form for editing blog settings -->
+    <div class="formContainer">
+        <form action="/author/settings" method="post">
+            <!-- Blog Name -->
+            <div>
+                <h4>Blog Name: </h4>
+                <input id="blog_name" type="text" name="blog_name" value="<%= settings.blog_name %>" required/>
+            </div>
+            <!-- Author -->
+            <div class="mt-3">
+                <h4>Author Name: </h4>
+                <input id="author_name" type="text" name="author_name" value="<%= settings.author %>" required/>
+            </div>
+            <!-- Save button -->
+            <button type="submit" class="formButton">Save</button>
+        </form>
+    </div>
+    <!-- Script for handling success notification -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        const notification = document.getElementById('notification');
+
+        // Show notification if success parameter is 'yes'
+        if (success === 'yes') {
+            showNotification("Changes updated successfully.");
+        }
+
+        // Function to display notification and hide after 3 seconds
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000); // Hide notification after 3 seconds
+        }
+    </script>
+</body>
+</html>

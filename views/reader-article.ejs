@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <title>Reader-Article</title>
+</head>
+<body>
+    <!-- Header with blog name and write button -->
+    <div class="headerBar">
+        <div class="blogName">
+            <h1><%= settings.blog_name %></h1>
+        </div>
+        <div class="d-flex justify-content-end">
+            <a href="/author/home" class="writeButton">Write Now!</a>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div>
+        <a href="/reader/home">
+            <i class="bi bi-arrow-left backButton"></i>
+        </a>
+    </div>
+
+    <!-- Page title -->
+    <div class="pageTitle">
+        <h1>Reader-article page</h1>
+    </div>
+
+    <!-- Article Title -->
+    <div class="my-5 text-center">
+        <h1><%= article.title %></h1>
+    </div>
+
+    <!-- Article author -->
+    <div class="text-center">
+        <h3>Author: <%= article.author %></h3>
+    </div>
+
+    <!-- Article published date -->
+    <div class="text-center">
+        <h3>Published: <%= article.published %></h3>
+    </div>
+
+    <!-- Article details -->
+    <div class="readerArticleDetails">
+        <!-- Article views -->
+        <div class="text-end">
+            <i class="bi bi-eye-fill"></i>
+        </div>
+        <div class="text-center">
+            <h5><%= article.views %></h5>
+        </div>
+        <!-- Article likes -->
+        <div class="text-center">
+            <i class="bi bi-heart-fill"></i>
+        </div>
+        <div class="text-start">
+            <h5><%= article.likes %></h5>
+        </div>
+        <!-- Like button -->
+        <div class="text-start">
+            <form method="post">
+                <input type="hidden" name="action" value="like">
+                <button type="submit" class="likeButton">Like</button>
+            </form>
+        </div>
+    </div>
+  
+    <!-- Article Content -->
+    <div class="articleContent">
+        <p><%= article.content %></p>
+    </div>
+
+    <!-- Comments Section -->
+    <div>
+        <div class="subtitle">
+            <h2>Comments</h2>
+        </div>
+        <!-- Comment form -->
+        <div class="commentForm">
+            <form method="POST" onsubmit="return validateForm()">
+                <h5>Name :</h5>  
+                <input type="text" id="name" name="name"><br>
+                <h5>Comment :</h5>
+                <input type="text" id="comment" name="comment"><br>
+                <input type="hidden" name="action" value="comment">
+                <button type="submit" class="commentButton mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <!-- Loop through comments -->
+        <% comments.forEach(function(comment) { %>
+            <!-- Display Comments -->
+            <div class="comment">
+                <h3><%= comment.name %></h3>
+                <p><%= comment.created %></p>
+                <p><%= comment.comment %></p>
+            </div>
+        <% }); %>
+    </div>
+    
+    <!-- Error Handling Script -->
+    <script>
+        // Alert if there's an error
+        <% if (typeof error !== 'undefined' && error) { %>
+            alert("<%= error %>");
+        <% } %>
+
+        // Validate Comment Form
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const comment = document.getElementById('comment').value.trim();
+
+            // Validate if both fields are filled or both are empty
+            if ((name && !comment) || (!name && comment)) {
+                if (!name) {
+                    alert("Name is required if Comment is filled.");
+                    return false;
+                }
+                if (!comment) {
+                    alert("Comment is required if Name is filled.");
+                    return false;
+                }
+            }
+
+            // Both fields are either filled or empty
+            return true;
+        }
+    </script>
+</body>
+</html>
