@@ -23,22 +23,30 @@ This project was built for the **Databases, Networks and the Web** module.
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/ellenfaustine/News-Blog.git
-cd News-Blog```
+cd News-Blog
+```
 
 ### 2. Install dependencies
+```bash
 npm install
-
+```
 ### 3. Create the database
 If using Command Prompt or Bash:
+```bash
 sqlite3 database.db < db_schema.sql
+```
 If using PowerShell:
+```powershell
 Get-Content db_schema.sql | sqlite3 database.db
+```
 
 ### 4. Start the server
+```bash
 node index.js
+```
 
 ### 5. Open in browser
-http://localhost:3000
+[`http://localhost:3000`](http://localhost:3000)
 
 ## License
 This project was developed for academic purposes.
